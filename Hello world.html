@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<html>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <h1 id="1">Hello World</h1>
+
+    <script>
+        function change() {
+            let element = document.getElementById("1");
+            element.innerHTML = ("Hello Sarbajit");
+            document.getElementById("1").style.color = "green";
+            document.getElementById("1").style.fontSize = "xxx-large";
+        }
+        setTimeout(change, 2000);
+
+
+        function relode() {
+            window.location.reload();
+        }
+        setTimeout(relode, 4000);
+    </script>
+
+    <p> <b>Used JavaScript to changed "Hello Word" to "Hello Sarbajit" .</b> </p>
+    <p> <b>5sec delay with color change and auto refresh</b> </p> 
+
+</body>
+
+</html>
