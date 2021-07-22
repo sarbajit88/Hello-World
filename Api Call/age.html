@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <form>
+        <input type="text" name="inputName">
+
+        <button type="button" disabled>click</button>
+
+        <div class="age">
+            Age:40
+
+        </div>
+
+    </form>
+
+    <script>
+        $(document).ready(() => {
+            const input$ = $("input");
+            const button$ = $("button");
+            const url = "https://api.agify.io/";
+
+            input$.on("input", () => {
+                if (input$.val().length === 0) {
+                    button$.prop("disabled", true);
+                } else {
+                    button$.prop("disabled", false);
+                }
+            })
+
+            button$.click(() => {
+                const text = input$.val();
+                
+                $.ajax({
+                    url: url,
+                    type: "get", //send it through get method
+                    data: {
+                        name: text
+                    }
+                })
+                    .then((data) => {
+                        $(".age").text(`Age:${data.age}`);
+                    })
+                    .catch((error)=>{
+                        console.error(error)
+                    })
+            })
+        })
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>
