@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+<h1>The Giphy Fetch</h1>
+
+<body>
+
+    <form>
+        <input type="text" name="inputName">
+
+        <button type="button" id="btn1">Search Giphy</button>
+        <button type="button" id="btn2">Remove Giphy</button>
+
+        <div id="pic"></div>
+    </form>
+
+    <script>
+        //https://api.giphy.com/v1/gifs/search?q=hilarious&rating=g&api_key=dc6zaTOxFJmzC
+        $(document).ready(() => {
+            const input$ = $("input");
+            const url = "https://api.giphy.com/v1/gifs/search";
+
+            $("#btn1").click(() => {
+                const text$ = input$.val();
+                console.log(text$);
+                $.ajax({
+                    url: url,
+                    type: "get", // get method
+                    data: {
+                        q: text$, //tried with only api_key:= text but was not working cannot understand why
+                        api_key: "dc6zaTOxFJmzC", // got it right just by chance, tried with other values not working
+                    }
+                })
+                    .then((data) => {
+                        $("#pic").append($("<img>", {
+                            src: data.data[0].images.fixed_width_small.url,
+                        }));
+                        $("input").val('');
+                    })
+                    // .ajaxError((error){
+                    //     console.log("An error occurred!");
+                    // });
+                    
+                    // .catch((error) => {      //catch function not working.
+                    //     console.log(error);
+                    // })
+                $("#btn2").on("click", (() => {
+                    $("#pic").empty();
+                    $("input").val('');
+                }));
+
+            })
+        })
+
+    </script>
+
+</body>
+
+</html>
