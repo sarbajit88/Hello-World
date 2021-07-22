@@ -1,0 +1,27 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "Learning JS",
+  "main": "script.js",
+  "scripts": {
+    "build": "browserify script.js -o dist/bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tapun": "echo 'Hello World'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarbajit88/Hello-World.git"
+  },
+  "author": "Sarbajit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarbajit88/Hello-World/issues"
+  },
+  "homepage": "https://github.com/sarbajit88/Hello-World#readme",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  }
+}
