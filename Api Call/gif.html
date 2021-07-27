@@ -40,18 +40,23 @@
                     }
                 })
                     .then((data) => {
-                        $("#pic").append($("<img>", {
-                            src: data.data[0].images.fixed_width_small.url,
-                        }));
+                        for (let i = 0; i < 50; i++) {
+                            $("#pic").append($("<img>", {
+                                src: data.data[i].images.fixed_width_small.url,
+                            }));
+                        }
+                        // $("#pic").append($("<img>", {
+                        //     src: data.data[0].images.fixed_width_small.url,
+                        // }));
                         $("input").val('');
                     })
-                    // .ajaxError((error){
-                    //     console.log("An error occurred!");
-                    // });
-                    
-                    // .catch((error) => {      //catch function not working.
-                    //     console.log(error);
-                    // })
+                // .ajaxError((error){
+                //     console.log("An error occurred!");
+                // });
+
+                // .catch((error) => {      //catch function not working.
+                //     console.log(error);
+                // })
                 $("#btn2").on("click", (() => {
                     $("#pic").empty();
                     $("input").val('');
