@@ -40,14 +40,11 @@
                     }
                 })
                     .then((data) => {
-                        for (let i = 0; i < 50; i++) {
+                        for (let i = 0; i < data.data.length; i++) {
                             $("#pic").append($("<img>", {
                                 src: data.data[i].images.fixed_width_small.url,
                             }));
                         }
-                        // $("#pic").append($("<img>", {
-                        //     src: data.data[0].images.fixed_width_small.url,
-                        // }));
                         $("input").val('');
                     })
                 // .ajaxError((error){
