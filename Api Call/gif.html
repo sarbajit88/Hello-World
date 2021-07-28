@@ -36,37 +36,29 @@
                     data: {
                         q: text$, //tried with only api_key:= text but was not working cannot understand why
                         api_key: "dc6zaTOxFJmzC", // got it right just by chance, tried with other values not working
-                    }
-                })
-                    .then((data) => {
-                        data.data.forEach((img)=>{
-                            console.log(img);
+                    },
+                    success: ((data) => {
+                        data.data.forEach((img) => {
                             $("#pic").append($("<img>", {
                                 src: img.images.fixed_width_small.url,
                             }));
-
                         })
-                        // for (let i = 0; i < data.data.length; i++) {
-                        //     $("#pic").append($("<img>", {
-                        //         src: data.data[i].images.fixed_width_small.url,
-                        //     }));
-                        // }
                         $("input").val('');
-                    })
-                // .ajaxError((error){
-                //     console.log("An error occurred!");
-                // });
+                    }),
+                    error: ((error) => {
+                        alert("An error occurred!")
+                    }),
+                    complete: ((error) => {
+                        console.log("Complete")
+                    }),
+                });
 
-                // .catch((error) => {      //catch function not working.
-                //     console.log(error);
-                // })
                 $("#btn2").on("click", (() => {
                     $("#pic").empty();
                     $("input").val('');
                 }));
-
-            })
-        })
+            });
+        });
 
     </script>
 
