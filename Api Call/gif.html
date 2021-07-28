@@ -30,7 +30,6 @@
 
             $("#btn1").click(() => {
                 const text$ = input$.val();
-                console.log(text$);
                 $.ajax({
                     url: url,
                     type: "get", // get method
@@ -40,11 +39,18 @@
                     }
                 })
                     .then((data) => {
-                        for (let i = 0; i < data.data.length; i++) {
+                        data.data.forEach((img)=>{
+                            console.log(img);
                             $("#pic").append($("<img>", {
-                                src: data.data[i].images.fixed_width_small.url,
+                                src: img.images.fixed_width_small.url,
                             }));
-                        }
+
+                        })
+                        // for (let i = 0; i < data.data.length; i++) {
+                        //     $("#pic").append($("<img>", {
+                        //         src: data.data[i].images.fixed_width_small.url,
+                        //     }));
+                        // }
                         $("input").val('');
                     })
                 // .ajaxError((error){
